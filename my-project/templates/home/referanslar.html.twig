@@ -1,0 +1,27 @@
+{% extends 'frontbase.html.twig' %}
+
+    {% block title %}       {{ data[0].title }}         {% endblock %}
+{% block keywords %}        {{ data[0].keywords }}      {% endblock %}
+{% block description %}     {{ data[0].description }}      {% endblock %}
+{% block body %}
+
+
+    <!--
+    body section
+    n-->
+
+    <hr class="soften">
+    <div>
+        <h1>Ürünler</h1>
+    </div>
+    <hr class="soften">
+    <div class="row">
+        <div class="span12">
+            <p>
+                {{ data[0].aboutus |raw }}
+            </p>
+            <div class="row"></div>
+        </div>
+    </div>
+
+{% endblock %}

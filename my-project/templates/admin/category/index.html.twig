@@ -1,0 +1,62 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Kategori Listesi{% endblock %}
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> Kategori Listesi </h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <h4><small  class="btn btn-success">
+                                    <a href="{{ path('admin_category_new') }}" style="color: white">
+                                        <i class="fa fa-plus"></i>
+                                        YENİ KATEGORİ EKLE</a> </small></h4>
+                            <hr>
+
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>ParentId</th>
+                                    <th>Kategori</th>
+                                    <th>Anahtar Kelime</th>
+                                    <th>Açıklama</th>
+                                    <th>Durum</th>
+                                    <th>Düzenle</th>
+                                    <th>Göster</th>
+                                    <th>Silme</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for category in categories %}
+                                    <tr>
+                                        <td>{{ category.id }}</td>
+                                        <td>{{ category.parentId }}</td>
+                                        <td>{{ category.title }}</td>
+                                        <td>{{ category.keywords }}</td>
+                                        <td>{{ category.description }}</td>
+                                        <td>{{ category.status }}</td>
+                                        <td><a href="{{ path('admin_category_edit', {'id': category.id,'pid':category.parentid}) }}" class="btn btn-theme">DÜZENLE</a></td>
+                                        <td><a href="{{ path('admin_category_show', {'id': category.id,'pid':category.parentid}) }}" class="btn btn-success"> GÖSTER</a></td>
+                                        <td><a href="{{ path('admin_category_delete',{'id': category.id}) }}"  class="btn btn-danger">SİL</a> </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

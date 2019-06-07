@@ -1,0 +1,90 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Orders{% endblock %}
+
+ {% block sidebar %}
+     {% include ('home/user_sidebar.html.twig') %}
+ {% endblock %}
+
+{% block body %}
+
+    <div class="features_items">
+        <h2 class="title text-center"> Ürün Detayı </h2>
+    </div>
+
+    <div class="container " >
+        <div class="row ">
+            <div class="col-sm-4 col-sm-offset-1">
+                <table class="table  table-bordered" style="width: 600px">
+                    <tbody>
+                    <tr >
+                        <th>Id</th>
+                        <td>{{ order.id }}</td>
+                    </tr>
+                    <tr>
+                        <th> Müsteri no:</th>
+                        <td>{{ order.userid }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tutar</th>
+                        <td>{{ order.amount }} ₺</td>
+                    </tr>
+                    <tr>
+                        <th>İsim</th>
+                        <td>{{ order.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adres</th>
+                        <td>{{ order.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Şehir</th>
+                        <td>{{ order.city }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefon</th>
+                        <td>{{ order.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kargo Bilgisi</th>
+                        <td>{{ order.shipinfo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Durum</th>
+                        <td>{{ order.status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Not</th>
+                        <td>{{ order.note }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- ikinci tablı-->
+                <table class="table table-bordered" style="width: 600px">
+                    <thead>
+                    <tr>
+                        <th>Ürün no</th>
+                        <th>Ürün adı</th>
+                        <th>Satış Fiyatı</th>
+                        <th>Adet</th>
+                        <th>Toplam Tutar</th>
+                        <th>Durum</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rs in orderdetail %}
+                        <tr>
+                            <td>{{ rs.id }}</td>
+                            <td>{{ rs.name }}₺</td>
+                            <td>{{ rs.price }}</td>
+                            <td>{{ rs.quantity }}</td>
+                            <td>{{ rs.amount }}</td>
+                            <td>{{ rs.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

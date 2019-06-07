@@ -1,0 +1,163 @@
+
+{{ include('admin/messages.html.twig') }}
+<form class="form-horizontal"  method="post" action="">
+
+    <div class="col-md-12">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab">Genel Bilgileri</a></li>
+                <li><a href="#tab_2" data-toggle="tab">E-mail Server Bilgileri</a></li>
+                <li><a href="#tab_3" data-toggle="tab">Hakkımızda</a></li>
+                <li><a href="#tab_4" data-toggle="tab">İletişim</a></li>
+                <li><a href="#tab_5" data-toggle="tab">Referans</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <b>:</b>
+                    <div class="form-group ">
+                        <label   class="control-label col-lg-1"> Adı</label>
+                        <div class="col-lg-6">
+                            <input class="form-control "   name="setting[title]" value="{{setting.title }}"  type="text" placeholder="Ad">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label    class="control-label col-lg-1">Anahtar Kelime</label>
+                        <div class="col-lg-6">
+                            <input class="form-control "   name="setting[keywords]" value="{{setting.keywords}}"  type="text" placeholder="Anahtar Kelimeler">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1"> Kısa Açıklama </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[description]" value="{{setting.description}}"  type="text" placeholder="açıklama">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">Firma Adı </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[company]" value="{{setting.company}}"  type="text" placeholder="Firma Adı">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">Adresi </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[address]" value="{{setting.address}}"  type="text" placeholder="Adres">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">Telefonu </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[phone]" value="{{setting.phone}}"  type="text" placeholder="telefon">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">E-mail </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[email]" value="{{setting.email}}"  type="text" placeholder="email">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label   class="control-label col-lg-1">Durum</label>
+                        <div class="col-lg-2">
+                            <select name="setting[status]" class="form-control">
+                                <option>{{ setting.status }}</option>
+                                <option>true</option>
+                                <option selected>false </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="tab_2">
+                    <b>:</b>
+                    <div class="form-group ">
+                        <label   class="control-label col-lg-1">E-mail Server </label>
+                        <div class="col-lg-6">
+                            <input class="form-control "   name="setting[smtserver]" value="{{setting.smtserver }}"  type="text" placeholder="E-mail Server">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label    class="control-label col-lg-1">E-mail</label>
+                        <div class="col-lg-6">
+                            <input class="form-control "   name="setting[smtpemail]" value="{{setting.smtpemail}}"  type="text" placeholder="E-mail">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1"> E-mail Şifre </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[smptppass]" value="{{setting.smptppass}}"  type="text" placeholder="E-mail Şifre">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">SMTP Port </label>
+                        <div class="col-lg-6">
+                            <input class="form-control " name="setting[smtpport]" value="{{setting.smtpport}}"  type="text" placeholder="SMTP Port">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="tab_3">
+                    <b>:</b>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">Hakkımızda</label>
+                        <div class="col-lg-6">
+                            <textarea id="aboutus" name="setting[aboutus]">{{setting.aboutus}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="tab_4">
+                    <b>:</b>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">İletişim</label>
+                        <div class="col-lg-6">
+                            <textarea id="contact" name="setting[contact]">{{setting.contact}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane " id="tab_5">
+                    <b>:</b>
+                    <div class="form-group ">
+                        <label class="control-label col-lg-1">Referanslar</label>
+                        <div class="col-lg-6">
+                            <textarea id="referances" name="setting[referances]">{{setting.referances}}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.tab-pane -->
+
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+
+    <div class="inbox-body">
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button  class="btn btn-theme" type="submit">KAYDET</button>
+                <button  class="btn btn-theme04" type="button">İPTAL</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#aboutus' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#contact' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#referances' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

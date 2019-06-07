@@ -1,0 +1,71 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}profil Bilgileri{% endblock %}
+
+ {% block sidebar %}
+     {% include ('home/user_sidebar.html.twig') %}
+ {% endblock %}
+
+{% block body %}
+
+    <div class="features_items">
+        <h2 class="title text-center"> profil Bilgileri </h2>
+    </div>
+        <div class="container " >
+            <div class="row ">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <table class="table  table-bordered" style="width: 600px">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ app.user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{  app.user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Roles</th>
+                            <td>{{  app.user.roles|join }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <td>{{  app.user.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adres</th>
+                            <td>{{  app.user.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>Şehir</th>
+                            <td>{{  app.user.city }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telefon</th>
+                            <td>{{  app.user.phone }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>DURUM</th>
+                            <td>{{  app.user.status }}</td>
+                        </tr>
+                        <tr>
+                            <th>Şifre</th>
+                            <td>{{ app. user.password }}</td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                    <div class="col-sm-offset-8">
+                        <a href="{{ path('home') }}"><h2 class="or">B<strong style="color:black">S</strong> </h2>
+                            <strong style="color:darkorange">BLACK</strong><strong style="color:black">STONG</strong></a>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

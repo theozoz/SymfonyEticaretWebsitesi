@@ -1,0 +1,61 @@
+
+
+
+{% extends 'frontbase.html.twig' %}
+{% block title %}Siparişlerim {% endblock %}
+
+ {% block sidebar %}
+
+     {% include ('home/user_sidebar.html.twig') %}
+
+ {% endblock %}
+
+{% block body %}
+
+    <div class="features_items">
+        <h2 class="title text-center"> Siparişleriniz </h2>
+    </div>
+
+    <div class="container " >
+        <div class="row ">
+            <div class="col-sm-4 col-sm-offset-1">
+                <table class="table table-bordered" style="width: 700px">
+                    <thead>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Fiyat</th>
+                        <th>Şehir</th>
+                        <th>Telefon</th>
+                        <th>Kargo</th>
+                        <th>Tarih</th>
+                        <th>Durum</th>
+                        <th>Göster</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.amount }}₺</td>
+                            <td>{{ order.city }}</td>
+                            <td>{{ order.phone }}</td>
+                            <td>{{ order.shipinfo }}</td>
+                            <td>{{ order.createdat|date("m/d/y") }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <a href="{{ path('orders_show', {'id': order.id}) }}" class=" btn btn-success">Göster</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="11">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

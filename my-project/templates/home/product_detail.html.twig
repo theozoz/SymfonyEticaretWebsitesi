@@ -1,0 +1,72 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}     Ürün Detayı     {% endblock %}
+{% block keywords %}              {% endblock %}
+{% block description %}        {% endblock %}
+{% block sidebar %} {% include ('home/_sidebar.html.twig') %}{% endblock %}
+{% block body %}
+    <section>
+        <div class="container">
+            <h2 class="title text-center">Ürün Detayı</h2>
+            <div class="row">
+                <div class="col-sm-9 padding-right">
+                    <div class="product-details"><!--product-details-->
+                        <div class="col-sm-5">
+                            <div class="view-product">
+                                <img src="{{ asset('uploads') }}/images/{{ data[0].image }}" alt="" />
+
+                            </div>
+                            <div id="similar-product" class="carousel slide" data-ride="carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <a href=""><img src="{{ asset('uploads') }}/images/{{ data[0].image }} "  alt=""></a>
+                                    </div>
+                                    {% for rs in images %}
+                                        <div class="item "  >
+                                            <a href=""><img src="{{ asset('uploads') }}/images/{{ rs.image }}"  alt=""></a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left item-control" href="#similar-product" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a class="right item-control" href="#similar-product" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="product-information"><!--/product-information-->
+
+                                <h2>{{ data[0].title }}</h2>
+                                <p>{{ data[0].description }}</p>
+
+                                <form name="shopcard" class="from-horizantal qtyFrm" action="{{ path('shopcard_new') }}" method="post">
+                                <span>
+									<span>₺ {{ data[0].saprice }}</span>
+									<label>Adet:</label>
+									<input type="number" name="shopcard[quantity]" value="1" min="1" max="{{ data[0].amount }}" />
+									<input type="hidden" name="shopcard[productid]" value="{{ data[0].id }}" />
+
+
+									<input type="hidden" name="token" value="{{ csrf_token('add-item') }}" />
+
+									<button type="submit"  class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>
+										Sepete Ekle
+									</button>
+								</span>
+                                    <p><b>STOK:</b> {{ data[0].amount }}</p>
+                                </form>
+                            </div><!--/product-information-->
+                        </div>
+                    </div><!--/product-details-->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

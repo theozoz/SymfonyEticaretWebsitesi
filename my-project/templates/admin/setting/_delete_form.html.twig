@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin_setting_delete', {'id': setting.id}) }}" onsubmit="return confirm(' Silelim mi?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ setting.id) }}">
+    <button class="btn btn-warning">Sil</button>
+</form>

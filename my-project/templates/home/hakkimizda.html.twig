@@ -1,0 +1,81 @@
+{% extends 'frontbase.html.twig' %}
+
+
+
+{% block title %}   Hakkımızda  {% endblock %}
+
+
+{% block body %}
+    <section class="">
+
+                                <img class="sp-slide sp-selected" data-index="0" data-init="true" data-loaded="true"
+                                     src="{{ asset('uploads') }}/images/banner_4.jpg" style="width: 1330px;
+                                     height: 577px; margin-left: 10px; left: 1330px;">
+                                    <div class="sp-image-container" style="width: 838px; height: 57px;">
+                                    </div>
+                                </img>
+
+    </section>
+
+
+
+    </section>
+    <div class="container">
+        <div class="widget kopa-widget-intro-01">
+
+            <div class="widget-content module-intro-01--01">
+                <ul class="row ul-mh ct-list-02">
+                    <li class="col-md-4 col-sm-4 col-xs-12" style="height: 390px;">
+                        <article class="entry-item ct-item-01">
+                            <div class="entry-thumb">
+                                <img src="{{ asset('uploads') }}/images/1_1.png" alt="KALİTE">
+                            </div>
+                            <div class="entry-content">
+                                <h4 class="entry-title style-01">
+                                    <strong style="color: darkorange"> KALİTE</strong>
+                                </h4>
+                                <p>İçeriğinde kullandığı esansları ile Bargello, kalıcılığı ve kaliteyi bir arada buluşturuyor.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <li class="col-md-4 col-sm-offset-4 col-xs-12" style="height: 390px;">
+                        <article class="entry-item ct-item-01">
+                            <div class="entry-thumb">
+                                <img src="{{ asset('uploads') }}/images/3.png" alt="ÜRÜN ÇEŞİTLİLİĞİ">
+                            </div>
+                            <div class="entry-content">
+                                <h4 class="entry-title style-01">
+                                    <strong style="color: darkorange"> ÜRÜN ÇEŞİTLİLİĞİ</strong>
+                                </h4>
+                                <p>BlackStone; parfüm, vücut spreyi, kolonya, ortam ve araç kokuları gibi farklı ürünleri başarıyla üretmektedir.</p>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+                <!-- row -->
+            </div>
+
+            <header class="widget-header">
+                <h3 class="widget-title style-01 text-center">Biz Kimiz ?</h3>
+                <p class="widget-sub-title style-01 text-center">Sizi çok iyi tanıyoruz</p>
+                <p class="short-description text-center">Uzun yıllardır birlikte olmanın mutluluğunu yaşıyoruz. Bargello hakkında bilmek istediğiniz herşey burada!</p>
+            </header>
+            <div class="widget-sub-title style-01 text-center">
+                {{ data[0].aboutus }}
+            </div>
+
+
+            <div class="col-sm-offset-6">
+                    <h2 class="or">B<strong style="color:black">S</strong> </h2>
+            </div>
+
+            </div>
+            <!-- widget-content -->
+        </div>
+        <!-- widget -->
+    </div>
+
+
+
+{% endblock %}

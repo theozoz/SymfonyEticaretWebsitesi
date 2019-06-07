@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shopcard{% endblock %}
+
+{% block body %}
+    <h1>Shopcard</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ shopcard.id }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ shopcard.userid }}</td>
+            </tr>
+            <tr>
+                <th>Productid</th>
+                <td>{{ shopcard.productid }}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{ shopcard.quantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('shopcard_index') }}">back to list</a>
+
+    <a href="{{ path('shopcard_edit', {'id': shopcard.id}) }}">edit</a>
+
+    {{ include('shopcard/_delete_form.html.twig') }}
+{% endblock %}

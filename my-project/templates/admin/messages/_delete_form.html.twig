@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin_messages_delete', {'id': message.id}) }}" onsubmit="return confirm('Silelim mi?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+    <button class="btn btn-danger">SİL</button>
+</form>

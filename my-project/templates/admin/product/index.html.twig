@@ -1,0 +1,85 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Ürün Listesi{% endblock %}
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> Ürün Listesi </h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="col-mg-12">
+                        <div class="content-panel">
+                            <h4><small  class="btn btn-success">
+                                    <a href="{{ path('admin_product_new') }}" style="color: white">
+                                        <i class="fa fa-plus"></i>
+                                        YENİ ÜRÜN EKLE</a> </small></h4>
+                            <hr>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ürün</th>
+                                    <th>Adet</th>
+                                    <th>Alış fiyatı</th>
+                                    <th>Satış fiyatı</th>
+                                    <th>Min Değer</th>
+                                    <th>Resim</th>
+                                    <th>Galeri</th>
+                                    <th>Categori_id</th>
+                                    <th>Durumu</th>
+                                    <th>Düzenle</th>
+                                    <th>Göster</th>
+                                    <th>Silme</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in products %}
+                                    <tr>
+                                        <td>{{ product.id }}</td>
+                                        <td>{{ product.title }}</td>
+                                        <td>{{ product.amount }}</td>
+                                        <td>{{ product.price }}</td>
+                                        <td>{{ product.saprice }}</td>
+                                        <td>{{ product.min }}</td>
+
+                                        <td>
+
+                                                <a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=0,scrollBars=no,resizable=no,width=600,height=500');">
+                                                    {% if product.image==null %}
+                                                        <img src="{{ asset('uploads') }}/images/image.png"  height="35" width="40">
+                                                    {% else %}
+                                                    <img src="{{ asset('uploads') }}/images/{{ product.image }}"  height="35" width="40">
+                                                {{ product.image==null }}
+                                            {% endif %}
+                                                </a>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=0,scrollBars=no,resizable=no,width=1000,height=800');">
+                                            <img src="{{ asset('uploads') }}/images/gallery.png"  height="35" width="40">
+                                            </a>
+                                        </td>
+                                        <td>{{ product.categoryid }}</td>
+                                        <td>{{ product.status }}</td>
+                                        <td><a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-theme">DÜZENLE</a></td>
+                                        <td><a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-success"> GÖSTER</a></td>
+                                        <td>  {{ include('admin/product/_delete_form.html.twig') }} </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="18">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

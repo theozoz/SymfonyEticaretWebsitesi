@@ -1,0 +1,58 @@
+{{ include('admin/messages.html.twig') }}
+<form class="form-horizontal"  method="post" action="">
+    <div class="inbox-body">
+
+        <div class="form-group ">
+            <label   class="control-label col-lg-1">Üst Kategori</label>
+            <div class="col-lg-2">
+                <select name="category[parentid]" class="form-control">
+
+                    {% if category.parentid!=0 %}
+                    <option value=" {{ category.parentid }}">{{ category.title }}</option>
+                    {% else %}
+                    <option value="0">Ana Kategori</option>
+                    {% endif %}
+                    {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+    <div class="form-group ">
+        <label   class="control-label col-lg-1">Kategori Adı</label>
+        <div class="col-lg-6">
+            <input class="form-control "   name="category[title]" value="{{category.title }}"  type="text" placeholder="title">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label    class="control-label col-lg-1">Anahtar Kelime</label>
+        <div class="col-lg-6">
+            <input class="form-control "   name="category[keywords]" value="{{category.keywords}}"  type="text" placeholder="keywords">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label class="control-label col-lg-1">Açıklama </label>
+        <div class="col-lg-6">
+            <input class="form-control " name="category[description]" value="{{category.description}}"  type="text" placeholder="description">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label   class="control-label col-lg-1">Durum</label>
+        <div class="col-lg-2">
+            <select name="category[status]" class="form-control">
+                <option>{{ category.status }}</option>
+                <option>true</option>
+                <option selected>false </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button class="btn btn-theme" type="submit">KAYDET</button>
+            <button  class="btn btn-theme04" type="button">İPTAL</button>
+        </div>
+    </div>
+    </div>
+</form>

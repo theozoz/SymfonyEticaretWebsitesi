@@ -1,0 +1,30 @@
+{{ include('messages.html.twig') }}
+
+
+
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form"><!--login form-->
+                    <h2 style="color: darkorange" >Ödenecek Tutar</h2>
+                    <form action="{{ path('orders_new') }}" method="post">
+                        <input type="text" name="orders[amount]" value="{{ total }} ₺" placeholder="name" />
+                        <span style="color: darkorange">
+								KARGO ALICI BİLGİLER
+                        </span>
+                        <input type="text" name="orders[name]" value="{{ app.user.name }} " placeholder="Ad soyad"/>
+                        <input type="text" name="orders[address]" value="{{ app.user.address }}" placeholder="Adresi..."/>
+                        <input type="text" name="orders[city]" value="{{ app.user.city }}" placeholder="Şehir"/>
+                        <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder="subject"/>
+                        <span style="color: darkorange">
+								KREDİ KARTI BİLGİLER
+                        </span>
+                        <input type="text" name="cardholdername"  placeholder="Kart Adı Soyadı" />
+                        <input type="text" name="cardnumber"  placeholder="AY/YIL" />
+                        <input type="number" name="cardsecuritycode"  placeholder="Güvenlik Kodu" class="input-xlarge"/>
+                        <input type="hidden" name="token" value="{{ csrf_token('form-order') }}" />
+                        <button type="submit" class="btn btn-default">Satın Al</button>
+                    </form>
+
+                </div><!--/login form-->
+            </div>
+        </div>

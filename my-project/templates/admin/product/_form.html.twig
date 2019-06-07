@@ -1,0 +1,87 @@
+{{ include('admin/messages.html.twig') }}
+<form class="form-horizontal"  method="post" action="">
+    <div class="inbox-body">
+
+        <div class="form-group ">
+            <label   class="control-label col-lg-1">Kategorisi</label>
+            <div class="col-lg-2">
+                <select name="product[category_id]" class="form-control">
+                    {% if(catname) %}
+                        <option value=" {{ product.categoryid }}">{{ catname.title }}</option>
+                    {% endif %}
+                    {% for cat in catlist %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label   class="control-label col-lg-1">Kategori Adı</label>
+            <div class="col-lg-6">
+                <input class="form-control "   name="product[title]" value="{{product.title }}"  type="text" placeholder="title">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label    class="control-label col-lg-1">Anahtar Kelime</label>
+            <div class="col-lg-6">
+                <input class="form-control "   name="product[keywords]" value="{{product.keywords}}"  type="text" placeholder="keywords">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-lg-1">Açıklama </label>
+            <div class="col-lg-6">
+                <input class="form-control " name="product[description]" value="{{product.description}}"  type="text" placeholder="description">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-lg-1">Alış Fiyatı</label>
+            <div class="col-lg-6">
+                <input class="form-control " name="product[price]" value="{{product.price}}"  type="text" placeholder="Alış fiyatı">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-lg-1">Satış Fiyatı</label>
+            <div class="col-lg-6">
+                <input class="form-control " name="product[saprice]" value="{{product.saprice}}"  type="text" placeholder="Satış fiyatı">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-lg-1">Ürün Miktari</label>
+            <div class="col-lg-6">
+                <input class="form-control " name="product[amount]" value="{{product.amount}}"  type="text" placeholder="Adet sayısı">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label   class="control-label col-lg-1">Durum</label>
+            <div class="col-lg-2">
+                <select name="product[status]" class="form-control">
+                    <option>{{ product.status }}</option>
+                    <option>true</option>
+                    <option selected>false </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-lg-1">Detay</label>
+            <div class="col-lg-6">
+                <textarea id="editor" name="product[detail]">{{product.detail}}</textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button href="{{ path('admin_product_index') }}" class="btn btn-theme" type="submit">KAYDET</button>
+                <button  class="btn btn-theme04" type="button">İPTAL</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

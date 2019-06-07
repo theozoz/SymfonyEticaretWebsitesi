@@ -1,0 +1,17 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block sidebar %}
+
+    {% include ('home/user_sidebar.html.twig') %}
+
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="features_items">
+        <h2 class="title text-center"> Bilgilerinizi </h2>
+    </div>
+                        {{ include('orders/_form.html.twig') }}
+
+{% endblock %}

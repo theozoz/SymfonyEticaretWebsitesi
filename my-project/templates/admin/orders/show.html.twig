@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>{% block title %} Sipariş Detayı {% endblock %}</title>
+
+    <!-- Favicons -->
+    <link href="{{ asset('adminassets') }}/img/favicon.png" rel="icon">
+    <link href="{{ asset('adminassets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('adminassets') }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="{{ asset('adminassets') }}/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('adminassets') }}/css/style.css" rel="stylesheet">
+    <link href="{{ asset('adminassets') }}/css/style-responsive.css" rel="stylesheet">
+
+    <SCRIPT language="Javascript" type="text/javascript">
+        function openWin( windowURL, windowName, windowFeatures )
+        {
+            window.open( windowURL, windowName, windowFeatures ) ;}
+    </SCRIPT>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+
+    <!-- =======================================================
+  Template Name: Dashio
+  Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+  Author: TemplateMag.com
+  License: https://templatemag.com/license/
+======================================================= -->
+</head>
+
+<body>
+<section id="container">
+
+    <section class="wrapper site-min-height">
+        <h3><i class="fa fa-angle-right"></i> Sipariş Detayı </h3>
+        <div class="row mt">
+            <div class="col-lg-12">
+                <div class="col-md-12">
+                    <div class="content-panel">
+                        {% include ('messages.html.twig') %}
+                        <table class="table">
+                            <>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ order.id }}</td>
+                            </tr>
+                            <tr>
+                                <th> Müsteri no:</th>
+                                <td>{{ order.userid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tutar</th>
+                                <td>{{ order.amount }} ₺</td>
+                            </tr>
+                            <tr>
+                                <th>İsim</th>
+                                <td>{{ order.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adres</th>
+                                <td>{{ order.address }}</td>
+                            </tr>
+                            <tr>
+                                <th>Şehir</th>
+                                <td>{{ order.city }}</td>
+                            </tr>
+                            <tr>
+                                <th>Telefon</th>
+                                <td>{{ order.phone }}</td>
+                            </tr>
+                            <form action="{{ path('admin_orders_update',{'id': order.id}) }}" method="post">
+                                <tr>
+                                    <th>Kargo Bilgisi</th>
+                                    <td> <textarea  name="shipinfo" cols="100" rows="3">{{ order.shipinfo }}</textarea> </td>
+                                </tr>
+                                <tr>
+                                    <th>Not</th>
+                                    <td> <textarea  name="note" cols="100" rows="3">{{ order.note }}</textarea> </td>
+                                </tr>
+                                <tr>
+                                    <th>Durum</th>
+                                    <td><select name="status">
+                                            <option>{{ order.status }}</option>
+                                            <option>Accepted</option>
+                                            <option>Inshipping</option>
+                                            <option>Canceled</option>
+                                            <option>Canceled</option>
+                                        </select>
+
+                                        <input type="submit" value="Guncelle">
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </table>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Ürün no</th>
+                                <th>Ürün adı</th>
+                                <th>Satış Fiyatı</th>
+                                <th>Adet</th>
+                                <th>Toplam Tutar</th>
+                                <th>Durum</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% set total=0 %}
+                            {% for rs in orderdetail %}
+                                <tr>
+                                    <td>{{ rs.id }}</td>
+                                    <td>{{ rs.name }}₺</td>
+                                    <td>{{ rs.price }}</td>
+                                    <td>{{ rs.quantity }}</td>
+                                    <td>{{ rs.amount }}</td>
+                                    <td>{{ rs.status }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">Sipariş Detayları </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="5"> <b> Toplam alışveriş tutarı : {{ order.amount }} Tl</b>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>
+</body>
+</html>
